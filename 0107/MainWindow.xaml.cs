@@ -41,5 +41,8 @@ namespace _0107
         {
 
         }
+
+		//YouTube: Moo ICT: WPF C# Tutorial How to make a Flappy Bird Game in Visual Studio
+        //8 perc 40 másodperctől kell majd folytatni
 	}
 }
