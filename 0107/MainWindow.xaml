@@ -23,5 +23,7 @@
 
 		<Image x:Name="madar" Height="36" Width="50" Source="/images/katona2.png" Stretch="Fill" Canvas.Left="5" Canvas.Top="165"/>
 
+		<Label Name="txtScore" FontSize="22" FontWeight="ExtraBold" Content="Score: 0" />
+
 	</Canvas>
 </Window>
