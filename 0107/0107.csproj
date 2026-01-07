@@ -9,4 +9,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="backgroundpic.png" />
+    <None Remove="hatter2.png" />
+    <None Remove="images\katona2.png" />
+    <None Remove="images\oszlop3.png" />
+    <None Remove="images\oszlop4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="backgroundpic.png" />
+    <Resource Include="hatter2.png" />
+    <Resource Include="images\katona2.png" />
+    <Resource Include="images\oszlop3.png" />
+    <Resource Include="images\oszlop4.png" />
+  </ItemGroup>
+
 </Project>
