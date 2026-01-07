@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace _0107
 {
@@ -20,5 +21,25 @@ namespace _0107
         {
             InitializeComponent();
         }
-    }
+
+		private void KeyIsDown(object sender, KeyEventArgs e)
+		{
+
+		}
+
+		private void KeyIsUp(object sender, KeyEventArgs e)
+		{
+
+		}
+
+        private void StartGame()
+        {
+
+        }
+
+        private void EndGame()
+        {
+
+        }
+	}
 }
