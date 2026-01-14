@@ -39,17 +39,23 @@ namespace _0107
 			
 		}
 
-		private void KeyIsDown(object sender, KeyEventArgs e)
-		{
+        private void KeyIsDown(object sender, KeyEventArgs e)
+        {
             if (e.Key == Key.Space)
             {
-                madar.RenderTransform = new RotateTransform(-20, madar.Width /2, madar.Height /2);
+                madar.RenderTransform = new RotateTransform(-20, madar.Width / 2, madar.Height / 2);
+                gravity = -8;
             }
-		}
+            if (e.Key == Key.R && gameOver == true)
+            {
+                StartGame();
+            }
+        }
 
 		private void KeyIsUp(object sender, KeyEventArgs e)
 		{
-
+			madar.RenderTransform = new RotateTransform(5, madar.Width / 2, madar.Height / 2);
+			gravity = 8;
 		}
 
         private void StartGame()
