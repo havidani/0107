@@ -29,14 +29,17 @@ namespace _0107
             InitializeComponent();
 
             gameTimer.Tick += MainEventTimer;
-            gameTimer.Interval = TimeSpan.FromMicroseconds(20);
+            gameTimer.Interval = TimeSpan.FromMilliseconds(20);
             StartGame();
 
         }
 
 		private void MainEventTimer(object sender, EventArgs e)
 		{
-			
+			txtScore.Content= "Score: " + score;
+            flappyBirdHiBox = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
+
+            Canvas.SetTop(madar, Canvas.GetTop(madar) + gravity);
 		}
 
         private void KeyIsDown(object sender, KeyEventArgs e)
