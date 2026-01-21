@@ -23,7 +23,7 @@ namespace _0107
         double score;
         int gravity = 8;
         bool gameOver;
-        Rect flappyBirdHiBox;
+        Rect flappyBirdHitBox;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,16 +37,29 @@ namespace _0107
 		private void MainEventTimer(object sender, EventArgs e)
 		{
 			txtScore.Content= "Score: " + score;
-            flappyBirdHiBox = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
+            flappyBirdHitBox = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
 
             Canvas.SetTop(madar, Canvas.GetTop(madar) + gravity);
+
+            foreach(var x in MyCanvas.Children.OfType<Image>())
+            {
+                if((string)x.Tag == "oszlop1" | (string)x.Tag == "oszlop2" | (string)x.Tag == "oszlop3")
+                {
+                    Canvas.SetLeft(x, Canvas.GetLeft(x) -5);
+
+                    if (Canvas.GetLeft(x) < -100)
+                    {
+                        Canvas.SetLeft(x, 800);
+                    }
+                }
+            }
 		}
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
             {
-                madar.RenderTransform = new RotateTransform(-20, madar.Width / 2, madar.Height / 2);
+                madar.RenderTransform = new RotateTransform(-20, madar.Width /2, madar.Height / 2);
                 gravity = -8;
             }
             if (e.Key == Key.R && gameOver == true)
