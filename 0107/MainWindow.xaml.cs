@@ -37,9 +37,15 @@ namespace _0107
 		private void MainEventTimer(object sender, EventArgs e)
 		{
 			txtScore.Content= "Score: " + score;
+
             flappyBirdHitBox = new Rect(Canvas.GetLeft(madar), Canvas.GetTop(madar), madar.Width, madar.Height);
 
             Canvas.SetTop(madar, Canvas.GetTop(madar) + gravity);
+
+            if (Canvas.GetTop(madar) < -10 || Canvas.GetTop(madar) > 475)
+            {
+                EndGame();
+            }
 
             foreach(var x in MyCanvas.Children.OfType<Image>())
             {
@@ -119,7 +125,9 @@ namespace _0107
 
         private void EndGame()
         {
-
+            gameTimer.Stop();
+            gameOver = true;
+            txtScore.Content += " Game Over!";
         }
 
 		//YouTube: Moo ICT: WPF C# Tutorial How to make a Flappy Bird Game in Visual Studio
