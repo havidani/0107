@@ -100,6 +100,7 @@ namespace _0107
             score = 0;
 
             gameOver = false;
+
             Canvas.SetTop(madar, 190);
 
             foreach (var x in MyCanvas.Children.OfType<Image>())
@@ -127,7 +128,7 @@ namespace _0107
         {
             gameTimer.Stop();
             gameOver = true;
-            txtScore.Content += " Game Over!";
+            vegeszoveg.Content += " Game Over";
         }
 
 		//YouTube: Moo ICT: WPF C# Tutorial How to make a Flappy Bird Game in Visual Studio
