@@ -50,8 +50,19 @@ namespace _0107
                     if (Canvas.GetLeft(x) < -100)
                     {
                         Canvas.SetLeft(x, 800);
+
+                        score += 0.5;
                     }
-                }
+
+                    Rect pipeHitBox = new Rect(Canvas.GetLeft(x), Canvas.GetTop(x), x.Width, x.Height);
+
+                    if (flappyBirdHitBox.IntersectsWith(pipeHitBox))
+                    {
+                        EndGame();
+                    }
+				}
+
+                
             }
 		}
 
