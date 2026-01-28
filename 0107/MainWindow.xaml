@@ -7,24 +7,91 @@
         mc:Ignorable="d"
         Title="Flappy Bird" Height="490" Width="525">
 
-	<Canvas x:Name="MyCanvas" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp" >
-		<Canvas.Background>
-			<ImageBrush ImageSource="/hatter2.png"/>
-		</Canvas.Background>
+	<Grid>
 
-		<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop1" Canvas.Left="110" Canvas.Top="254" Stretch="Fill"/>
-		<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop1" Canvas.Left="110" Canvas.Top="-270" Stretch="Fill" />
+		<!-- KEZDŐKÉPERNYŐ -->
+		<Grid x:Name="StartScreen">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+				<Button Content="Új játék" Click="NewGame_Click" Margin="5"/>
+				<Button Content="Ranglista" Click="Leaderboard_Click" Margin="5"/>
+			</StackPanel>
+		</Grid>
 
-		<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop2" Canvas.Left="240" Canvas.Top="364" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-		<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop2" Canvas.Left="240" Canvas.Top="-160" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+		<!-- JÁTÉKMÓD VÁLASZTÓ -->
+		<Grid x:Name="ModeScreen" Visibility="Hidden">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+				<Button Content="Sima" Click="NormalMode_Click" Margin="5"/>
+				<Button Content="Esős" Click="RainMode_Click" Margin="5"/>
+				<Button Content="Ködös" Click="FogMode_Click" Margin="5"/>
+				<Button Content="Vissza" Click="BackToMenu_Click" Margin="10"/>
+			</StackPanel>
+		</Grid>
 
-		<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop3" Canvas.Left="370" Canvas.Top="223" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-		<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop3" Canvas.Left="370" Canvas.Top="-301" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+		<!-- JÁTÉK CANVAS -->
+		<Canvas x:Name="GameScreen" Visibility="Hidden">
+			<!-- IDE JÖN A TELJES JÁTÉKOD -->
+			<Canvas x:Name="MyCanvas" Focusable="True" KeyDown="KeyIsDown" KeyUp="KeyIsUp" >
+				<Canvas.Background>
+					<ImageBrush ImageSource="/hatter2.png"/>
+				</Canvas.Background>
 
-		<Image x:Name="madar" RenderTransformOrigin="0.5,0.5" Height="36" Width="50" Source="/images/katona2.png" Stretch="Fill" Canvas.Left="5" Canvas.Top="190"/>
+				<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop1" Canvas.Left="110" Canvas.Top="254" Stretch="Fill"/>
+				<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop1" Canvas.Left="110" Canvas.Top="-270" Stretch="Fill" />
 
-		<Label Name="txtScore" FontSize="22" FontWeight="ExtraBold" Content="Score: 0" />
-		<Label Name="vegeszoveg"  FontSize="80" FontWeight="ExtraBold" Content="" Canvas.Left="22" Canvas.Top="110" Height="238" Width="480" Visibility="Hidden"/>
+				<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop2" Canvas.Left="240" Canvas.Top="364" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+				<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop2" Canvas.Left="240" Canvas.Top="-160" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
-	</Canvas>
+				<Image Height="390" Width="66" Source="/images/oszlop3.png" Tag="oszlop3" Canvas.Left="370" Canvas.Top="223" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+				<Image Height="390" Width="66" Source="/images/oszlop4.png" Tag="oszlop3" Canvas.Left="370" Canvas.Top="-301" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+				<Image x:Name="madar" RenderTransformOrigin="0.5,0.5" Height="36" Width="50" Source="/images/katona2.png" Stretch="Fill" Canvas.Left="5" Canvas.Top="190"/>
+
+				<Label Name="txtScore" FontSize="22" FontWeight="ExtraBold" Content="Score: 0" />
+				<Label Name="vegeszoveg"  FontSize="80" FontWeight="ExtraBold" Content="" Canvas.Left="22" Canvas.Top="110" Height="238" Width="480" Visibility="Hidden"/>
+
+				<Rectangle Width="4" Height="20"
+       Fill="LightBlue"
+       Tag="rain"
+       Canvas.Left="200"
+       Canvas.Top="-100"/>
+
+				<Rectangle Width="4" Height="20"
+       Fill="LightBlue"
+       Tag="rain"
+       Canvas.Left="400"
+       Canvas.Top="-300"/>
+
+				<Rectangle x:Name="fogLayer"
+       Width="800"
+       Height="500"
+       Fill="LightGray"
+       Opacity="0.4"
+       Visibility="Hidden"
+       IsHitTestVisible="False"/>
+
+				<Button x:Name="BackToMenuButton"
+        Content="Vissza a menübe"
+        Width="150"
+        Height="40"
+        Visibility="Collapsed"
+        Canvas.Left="325"
+        Canvas.Top="250"
+        Click="BackToMenuFromGame_Click"/>
+
+			</Canvas>
+		</Canvas>
+
+		<!-- RANGLISTA -->
+		<Grid x:Name="LeaderboardScreen" Visibility="Hidden">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+				<Label Content="Top 5 Ranglista" FontSize="20"/>
+				<ListBox x:Name="LeaderboardList" Width="200" Height="150"/>
+				<Button Content="Vissza" Click="BackToMenu_Click"/>
+			</StackPanel>
+		</Grid>
+
+	</Grid>
+
+
+	
 </Window>
