@@ -76,8 +76,9 @@ namespace _0107
         {
             if (e.Key == Key.Space)
             {
-                madar.RenderTransform = new RotateTransform(-20, madar.Width /2, madar.Height / 2);
-                gravity = -8;
+				madar.RenderTransform = new RotateTransform(-20);
+
+				gravity = -8;
             }
             if (e.Key == Key.R && gameOver == true)
             {
@@ -87,13 +88,16 @@ namespace _0107
 
 		private void KeyIsUp(object sender, KeyEventArgs e)
 		{
-			madar.RenderTransform = new RotateTransform(5, madar.Width / 2, madar.Height / 2);
+			madar.RenderTransform = new RotateTransform(5);
+
 			gravity = 8;
 		}
 
         private void StartGame()
         {
-            MyCanvas.Focus();
+			vegeszoveg.Visibility = Visibility.Hidden;
+
+			MyCanvas.Focus();
 
             int temp = 300;
 
@@ -128,8 +132,9 @@ namespace _0107
         {
             gameTimer.Stop();
             gameOver = true;
-            vegeszoveg.Content += " Game Over";
-        }
+            vegeszoveg.Content = " Game Over";
+			vegeszoveg.Visibility = Visibility.Visible;
+		}
 
 		//YouTube: Moo ICT: WPF C# Tutorial How to make a Flappy Bird Game in Visual Studio
         //17 perc 15 másodperctől kell majd folytatni
